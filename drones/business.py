@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from http import HTTPStatus as HTTPSStatus
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
+from util import MedicationPagination, DronePagination
 
 
 @api_view(['POST'])
@@ -117,6 +118,32 @@ def load_drone_with_medication(request, drone_id):
             "message": "No medication loaded"
         })
         response.status_code = HTTPSStatus.NOT_MODIFIED
+        return response
+
+    except Exception as e:
+        response = Response({
+            "status": "Error",
+            "message": f"An error occurred: {str(e)}"
+        })
+        response.status_code = HTTPSStatus.INTERNAL_SERVER_ERROR
+        return response
+
+
+@api_view(['GET'])
+def get_loaded_medication(request, drone_id):
+    try:
+        drone = get_object_or_404(Drone, pk=drone_id)
+        medications = drone.medications.all()
+        pagination = MedicationPagination()
+        result = pagination.paginate_queryset(medications, request)
+        serializer = MedicationSerializer(result, many=True)
+
+        response = pagination.get_paginated_response({
+            "status": "success",
+            "message": "Loaded medications retrieved successfully",
+            "data": serializer.data
+        })
+        response.status_code = HTTPSStatus.OK
         return response
 
     except Exception as e:
