@@ -24,7 +24,9 @@ class Drone(models.Model):
     )
     weight_limit = models.FloatField(default=500)
     battery_capacity = models.IntegerField()
-    state = models.CharField(max_length=10, choices=state_choices)
+    state = models.CharField(
+        max_length=10, choices=state_choices, default='IDLE'
+    )
     medications = models.ManyToManyField(
         'Medication', related_name='drones'
     )
