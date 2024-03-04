@@ -170,6 +170,7 @@ def check_drone_battery_level(request, drone_id):
             "data": {
                 "drone": drone.serial_number,
                 "battery_level": drone.battery_capacity,
+                "drone_state": drone.state,
             }
         })
         response.status_code = HTTPSStatus.OK
