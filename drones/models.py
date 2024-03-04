@@ -25,6 +25,9 @@ class Drone(models.Model):
     weight_limit = models.FloatField(default=500)
     battery_capacity = models.IntegerField()
     state = models.CharField(max_length=10, choices=state_choices)
+    medications = models.ManyToManyField(
+        'Medication', through='DroneMedication'
+    )
 
     def __repr__(self):
         return f"Drone: {self.serial_number}, {self.model}"
@@ -56,3 +59,16 @@ class Medication(models.Model):
 
     def __repr__(self):
         return f"Medication: {self.name}, {self.code}"
+
+
+class DroneMedication(models.Model):
+    drone = models.ForeignKey(Drone, on_delete=models.CASCADE)
+    medication = models.ForeignKey(Medication, on_delete=models.CASCADE)
+    loaded_quantity = models.FloatField()
+
+    def __repr__(self):
+        return f""""
+                Drone: {self.drone.serial_number},
+                Medication: {self.medication.name},
+                Quantity: {self.loaded_quantity}
+            """
