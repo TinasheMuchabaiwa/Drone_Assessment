@@ -3,7 +3,7 @@ from django.core.validators import RegexValidator
 
 
 class Drone(models.Model):
-    serial_number = models.CharField(max_length=100)
+    serial_number = models.CharField(max_length=100, unique=True)
     model_choices = [
         ('Lightweight', 'Lightweight'),
         ('Middleweight', 'Middleweight'),
@@ -54,7 +54,8 @@ class Medication(models.Model):
                 message='upper case letters, underscore, and numbers allowed',
                 code='invalid_code'
             )
-        ]
+        ],
+        unique=True
     )
     image = models.ImageField(upload_to='/medication_images', blank=True)
 
