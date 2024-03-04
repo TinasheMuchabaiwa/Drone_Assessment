@@ -30,14 +30,6 @@ class Drone(models.Model):
         return f"Drone: {self.serial_number}, {self.model}"
 
 
-# Each Medication has:
-
-# name (allowed only letters, numbers, â€˜-â€˜, â€˜_â€™);
-# weight;
-# code (allowed only upper case letters, underscore and numbers);
-# image (picture of the medication case).
-
-
 class Medication(models.Model):
     name = models.CharField(
         max_length=100,
