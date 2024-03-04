@@ -19,8 +19,8 @@ def healthy_battery(drone):
 
 
 # Check if the weight of medications is within the weight limit of the drone
-def within_weight_limit(drone, medication):
+def within_weight_limit(drone, med_weight):
     return (
-        drone.current_medication_weight + medication.weight
+        drone.current_medication_weight + med_weight
         <= drone.weight_limit
     )
