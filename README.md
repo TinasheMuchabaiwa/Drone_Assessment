@@ -51,7 +51,7 @@ This project is a Drone Management System developed as part of an assessment for
     python manage.py runserver
     ```
 
-7. Access the API documentation at `http://127.0.0.1:8000`.
+7. Access the API documentation at [`http://127.0.0.1:8000`].
 
 ### Using Docker (Optional)
 Alternatively, you can use Docker to run the application:
@@ -68,7 +68,7 @@ Alternatively, you can use Docker to run the application:
     docker run -p 8000:8000 drone-management-system
     ```
 
-3. Access the API documentation at `http://127.0.0.1:8000`.
+3. Access the API documentation at [`http://127.0.0.1:8000].
 
 ### Using Docker Compose (Optional)
 You can also use Docker Compose to run the application:
@@ -88,14 +88,14 @@ You can also use Docker Compose to run the application:
     docker-compose up -d
     ```
 
-3. Access the API documentation at `http://127.0.0.1:8000`.
+3. Access the API documentation at [`http://127.0.0.1:8000`].
 
 ## Usage
 - Use the Swagger UI to interact with the API endpoints and perform operations such as registering drones, registering medications, loading drones with medications, etc.
 
-- **IF YOU DON'T WANT TO GO THROUGH THE HASSLE OF INSTALLING THE PROJECT, YOU CAN ACCESS THE API AT `16.170.230.127:8000`**
+- **IF YOU DON'T WANT TO GO THROUGH THE HASSLE OF INSTALLING THE PROJECT, YOU CAN ACCESS THE API AT \[`16.170.230.127:8000`\]**
 
-- [`/redoc`](http://16.170.230.127:8000/redoc) is also available for a more user-friendly documentation. (`16.170.230.127:8000/redoc`) or (`127.0.0.1:8000/redoc`) if you are running the project locally.
+- `/redoc` [`http://16.170.230.127:8000/redoc`] is also available for a more user-friendly documentation. or [`127.0.0.1:8000/redoc`] if you are running the project locally.
 
 ## Testing
 - Automated tests are available to ensure the correctness of the implemented functionality.
