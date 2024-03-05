@@ -10,6 +10,7 @@ This project is a Drone Management System developed as part of an assessment for
 - DRF YASG (version 1.21.7) - for Swagger documentation
 - Pillow (version 10.2.0) - for image handling
 - Docker (optional)
+- Redis Server - for background tasks
 
 ## Installation
 1. Clone the repository:
