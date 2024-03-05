@@ -69,3 +69,17 @@ class Medication(models.Model):
 
     def __repr__(self):
         return f"Medication: {self.name}, {self.code}"
+
+
+class DroneBatteryHistory(models.Model):
+    drone = models.ForeignKey(Drone, on_delete=models.CASCADE)
+    battery_level = models.IntegerField()
+    state = models.CharField(max_length=10, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __repr__(self):
+        return f""""Drone: {self.drone.serial_number},
+                    Battery Level: {self.battery_level},
+                    State: {self.state},
+                    Timestamp: {self.timestamp}
+                """
