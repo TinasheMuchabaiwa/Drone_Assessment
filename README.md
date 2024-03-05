@@ -100,6 +100,11 @@ You can also use Docker Compose to run the application:
     ```
     python manage.py test
     ```
+- SIMILARLY, THE TESTING CAN BE DONE USING TOX, WHICH WILL ALSO CHECK FOR CODE QUALITY AND FORMATTING.
+    ```
+    tox
+    ```
+- If you use Docker/docker-compose, tox will run the tests before building the image.
 
 ## Authors
 - [TINASHE MUCHABAIWA](https://github.com/TinasheMuchabaiwa)

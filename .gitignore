@@ -11,6 +11,7 @@ venv
 *.rdb
 *.db
 *.DS_Store
+*.pyc
 app/static/public.pem
 
 # Byte-compiled / optimized / DLL files

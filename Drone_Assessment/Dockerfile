@@ -9,6 +9,8 @@ COPY . /app/
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN tox
+
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 
