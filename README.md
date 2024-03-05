@@ -69,6 +69,26 @@ Alternatively, you can use Docker to run the application:
 
 3. Access the API documentation at `http://127.0.0.1:8000`.
 
+### Using Docker Compose (Optional)
+You can also use Docker Compose to run the application:
+
+1. Build the Docker image:
+
+    ```
+    docker-compose build
+    ```
+2. Run the Docker container:
+
+    ```
+    docker-compose up
+    ```
+    or run in detached mode
+    ```
+    docker-compose up -d
+    ```
+
+3. Access the API documentation at `http://127.0.0.1:8000`.
+
 ## Usage
 - Use the Swagger UI to interact with the API endpoints and perform operations such as registering drones, registering medications, loading drones with medications, etc.
 
