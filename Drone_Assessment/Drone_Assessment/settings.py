@@ -133,11 +133,17 @@ aws_secret_key = urllib.parse.quote(os.environ.get('AWS_SECRET'), safe='')
 aws_access_key = urllib.parse.quote(os.environ.get('AWS_ACCESS'), safe='')
 
 # Celery settings
-CELERY_BROKER_URL = f'sqs://{aws_access_key}:{aws_secret_key}@us-east-1/'
-CELERY_BROKER_TRANSPORT_OPTIONS = {
-    'region': 'us-east-1',
-    'polling_interval': 1,
-    'visibility_timeout': 3600,
-    'queue_name_prefix': 'drone-assessment-',
-}
-CELERY_RESULT_BACKEND = 'db+sqlite:///celery_results.sqlite3'
+# CELERY_BROKER_URL = f'sqs://{aws_access_key}:{aws_secret_key}@us-east-1/'
+# CELERY_BROKER_TRANSPORT_OPTIONS = {
+#     'region': 'us-east-1',
+#     'polling_interval': 1,
+#     'visibility_timeout': 3600,
+#     'queue_name_prefix': 'drone-assessment-',
+# }
+# CELERY_RESULT_BACKEND = 'db+sqlite:///celery_results.sqlite3'
+
+# Celery settings
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TIMEZONE = 'UTC+2'
