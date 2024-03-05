@@ -106,6 +106,12 @@ def register_medication(request):
         return response
 
 
+@swagger_auto_schema(
+    method='POST',
+    operation_description="Load a drone with medication",
+    request_body=DroneSerializer.load_drone_request_body,
+    responses=DroneSerializer.responses["load_drone"]
+)
 @api_view(['POST'])
 def load_drone_with_medication(request, drone_id):
     try:
@@ -171,6 +177,11 @@ def load_drone_with_medication(request, drone_id):
         return response
 
 
+@swagger_auto_schema(
+    method='GET',
+    operation_description="Retrieve loaded medications on a drone",
+    responses=DroneSerializer.responses["get_med_on_drone"]
+)
 @api_view(['GET'])
 def get_loaded_medication(request, drone_id):
     try:

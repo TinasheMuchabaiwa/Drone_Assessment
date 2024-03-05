@@ -30,6 +30,7 @@ class MedicationSerializer(serializers.ModelSerializer):
         },
         required=['name, weight, code']
     )
+
     responses = {
         'register_medication': {
             201: openapi.Response(
@@ -79,6 +80,28 @@ class DroneSerializer(serializers.ModelSerializer):
         },
         required=['serial_number', 'model', 'weight_limit', 'battery_capacity']
     )
+    load_drone_request_body = openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        properties={
+            'medications': openapi.Schema(
+                type=openapi.TYPE_ARRAY,
+                items=openapi.Items(
+                    type=openapi.TYPE_INTEGER,
+                ),
+                default=[1, 2]
+            )
+        },
+        required=['medications']
+    )
+    load_drone_parameters = [
+        openapi.Parameter(
+            name='drone_id',
+            in_=openapi.IN_PATH,
+            type=openapi.TYPE_INTEGER,
+            required=True,
+            description="Drone ID"
+        )
+    ]
     responses = {
         'register_drone': {
             201: openapi.Response(
@@ -86,6 +109,21 @@ class DroneSerializer(serializers.ModelSerializer):
             ),
             400: "Input validation failed",
             409: "Drone with this serial number already exists",
+            500: "Internal Server Error"
+        },
+        'load_drone': {
+            201: openapi.Response(
+                description="Drone loaded successfully",
+            ),
+            304: "Not modified. Medication not loaded on Drone",
+            404: "Requested drone not available(IDLE) or does not exist",
+            500: "Internal Server Error"
+        },
+        'get_med_on_drone': {
+            200: openapi.Response(
+                description="Medication on drone retrieved successfully",
+            ),
+            404: "Requested drone not available(IDLE) or does not exist",
             500: "Internal Server Error"
         }
     }
