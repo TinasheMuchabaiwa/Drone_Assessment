@@ -208,6 +208,11 @@ def get_loaded_medication(request, drone_id):
         return response
 
 
+@swagger_auto_schema(
+    method='GET',
+    operation_description="Check battery level of a drone",
+    responses=DroneSerializer.responses["check_drone_battery_level"]
+)
 @api_view(['GET'])
 def check_drone_battery_level(request, drone_id):
     try:

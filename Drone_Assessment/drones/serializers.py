@@ -125,7 +125,14 @@ class DroneSerializer(serializers.ModelSerializer):
             ),
             404: "Requested drone not available(IDLE) or does not exist",
             500: "Internal Server Error"
-        }
+        },
+        'check_drone_battery_level': {
+            200: openapi.Response(
+                description="Drone battery level retrieved successfully",
+            ),
+            404: "Requested drone not available(IDLE) or does not exist",
+            500: "Internal Server Error"
+        },
     }
 
     def create(self, validated_data):
