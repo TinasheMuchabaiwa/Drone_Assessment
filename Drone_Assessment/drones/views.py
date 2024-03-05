@@ -12,12 +12,17 @@ from http import HTTPStatus as HTTPSStatus
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
 from itertools import takewhile
-from drf_yasg.utils import swagger_auto_schema
 from django.http import Http404
+from drf_yasg.utils import swagger_auto_schema
 
 
+@swagger_auto_schema(
+    method='POST',
+    operation_description="Register a new drone",
+    request_body=DroneSerializer.register_drone_request_body,
+    responses=DroneSerializer.responses['register_drone']
+)
 @api_view(['POST'])
-@swagger_auto_schema(request_body=DroneSerializer)
 def register_drone(request):
     try:
         drone = DroneSerializer(data=request.data)
@@ -56,8 +61,13 @@ def register_drone(request):
         return response
 
 
+@swagger_auto_schema(
+        method='POST',
+        operation_description="Register a medication",
+        request_body=MedicationSerializer.register_medication_request_body,
+        responses=MedicationSerializer.responses["register_medication"]
+)
 @api_view(['POST'])
-@swagger_auto_schema(request_body=MedicationSerializer)
 def register_medication(request):
     try:
         medication = MedicationSerializer(data=request.data)
