@@ -12,7 +12,7 @@ app.autodiscover_tasks(['drones'])
 
 
 app.conf.beat_schedule = {
-    'check-drone-battery-every-30-seconds': {
+    'check-drone-battery-every-minute': {
         'task': 'drones.tasks.check_drone_battery',
         'schedule': crontab(minute='*/1'),
     },
