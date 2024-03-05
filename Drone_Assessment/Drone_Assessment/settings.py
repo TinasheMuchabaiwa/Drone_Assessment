@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
-import urllib.parse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +40,7 @@ INSTALLED_APPS = [
     'drones',
     'rest_framework',
     'drf_yasg',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -129,8 +128,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # AWS SQS settings
-aws_secret_key = urllib.parse.quote(os.environ.get('AWS_SECRET'), safe='')
-aws_access_key = urllib.parse.quote(os.environ.get('AWS_ACCESS'), safe='')
+# aws_secret_key = urllib.parse.quote(os.environ.get('AWS_SECRET'), safe='')
+# aws_access_key = urllib.parse.quote(os.environ.get('AWS_ACCESS'), safe='')
 
 # Celery settings
 # CELERY_BROKER_URL = f'sqs://{aws_access_key}:{aws_secret_key}@us-east-1/'
@@ -146,4 +145,6 @@ aws_access_key = urllib.parse.quote(os.environ.get('AWS_ACCESS'), safe='')
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TIMEZONE = 'UTC+2'
+CELERY_TIMEZONE = 'Africa/Cairo'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
