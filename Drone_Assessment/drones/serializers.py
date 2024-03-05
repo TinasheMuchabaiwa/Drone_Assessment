@@ -133,6 +133,12 @@ class DroneSerializer(serializers.ModelSerializer):
             404: "Requested drone not available(IDLE) or does not exist",
             500: "Internal Server Error"
         },
+        'get_available_drones': {
+            200: openapi.Response(
+                description="Available drones retrieved successfully",
+            ),
+            500: "Internal Server Error"
+        }
     }
 
     def create(self, validated_data):

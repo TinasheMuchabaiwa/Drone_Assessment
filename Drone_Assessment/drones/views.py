@@ -239,6 +239,11 @@ def check_drone_battery_level(request, drone_id):
         return response
 
 
+@swagger_auto_schema(
+    method='GET',
+    operation_description="Retrieve available drones",
+    responses=DroneSerializer.responses["get_available_drones"]
+)
 @api_view(['GET'])
 def get_available_drones(request):
     try:
