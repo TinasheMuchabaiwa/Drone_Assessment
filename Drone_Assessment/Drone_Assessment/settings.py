@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import urllib.parse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -124,3 +126,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# AWS SQS settings
+aws_secret_key = urllib.parse.quote(os.environ.get('AWS_SECRET'), safe='')
+aws_access_key = urllib.parse.quote(os.environ.get('AWS_ACCESS'), safe='')
+
+# Celery settings
+CELERY_BROKER_URL = f'sqs://{aws_access_key}:{aws_secret_key}@us-east-1/'
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    'region': 'us-east-1',
+    'polling_interval': 1,
+    'visibility_timeout': 3600,
+    'queue_name_prefix': 'drone-assessment-',
+}
+CELERY_RESULT_BACKEND = 'db+sqlite:///celery_results.sqlite3'
