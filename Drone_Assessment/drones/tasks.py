@@ -2,11 +2,12 @@ from celery import shared_task
 from django.utils import timezone
 from drones.models import Drone, DroneBatteryHistory
 from drones.util import healthy_battery
-from rest_framework.response import Response
-from http import HTTPStatus
+import logging
+
+logger = logging.getLogger(__name__)
 
 
-@shared_task
+@shared_task()
 def check_drone_battery():
     drones = Drone.objects.all()
     battery_history = [
@@ -19,10 +20,4 @@ def check_drone_battery():
         for drone in drones
     ]
     DroneBatteryHistory.objects.bulk_create(battery_history)
-
-    response = Response({
-        "status": "success",
-        "message": "Battery level of drones checked successfully",
-        "time": timezone.now()
-    })
-    response.status_code = HTTPStatus.OK
+    logger.info(f"Drone battery levels checked at {timezone.now()}")
