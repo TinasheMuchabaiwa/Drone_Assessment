@@ -93,9 +93,11 @@ You can also use Docker Compose to run the application:
 ## Usage
 - Use the Swagger UI to interact with the API endpoints and perform operations such as registering drones, registering medications, loading drones with medications, etc.
 
-- **<span style="color:red">IF YOU DON'T WANT TO GO THROUGH THE HASSLE OF INSTALLING THE PROJECT, YOU CAN ACCESS THE API AT [`16.170.230.127:8000`](16.170.230.127:8000)</span>**
+- **IF YOU DON'T WANT TO GO THROUGH THE HASSLE OF INSTALLING THE PROJECT, YOU CAN ACCESS THE API AT:** 
+        [`16.170.230.127:8000`](16.170.230.127:8000)
 
-- **redoc** [`http://16.170.230.127:8000/redoc`](16.170.230.127:8000/redoc) is also available for a more user-friendly documentation. or [`127.0.0.1:8000/redoc`](http://127.0.0.1:8000/redoc) if you are running the project locally.
+- **redoc (A more user friendly documentation)** 
+        [`http://16.170.230.127:8000/redoc`](16.170.230.127:8000/redoc) is also available for a more user-friendly documentation. or [`127.0.0.1:8000/redoc`](http://127.0.0.1:8000/redoc) if you are running the project locally.
 
 ## Testing
 - Automated tests are available to ensure the correctness of the implemented functionality.
