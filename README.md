@@ -93,6 +93,8 @@ You can also use Docker Compose to run the application:
 ## Usage
 - Use the Swagger UI to interact with the API endpoints and perform operations such as registering drones, registering medications, loading drones with medications, etc.
 
+- **IF YOU DON'T WANT TO GO THROUGH THE HASSLE OF INSTALLING THE PROJECT, YOU CAN ACCESS THE API AT `16.170.230.127:8000`**
+
 ## Testing
 - Automated tests are available to ensure the correctness of the implemented functionality.
 - To run the tests, use the following command:
