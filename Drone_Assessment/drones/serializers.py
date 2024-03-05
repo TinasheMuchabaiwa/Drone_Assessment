@@ -26,6 +26,7 @@ class MedicationSerializer(serializers.ModelSerializer):
             ),
             'image': openapi.Schema(
                 type=openapi.TYPE_STRING,
+                nullable=True,
                 format='binary'
             )
         },
