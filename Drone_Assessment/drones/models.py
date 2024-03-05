@@ -74,6 +74,7 @@ class Medication(models.Model):
 class DroneBatteryHistory(models.Model):
     drone = models.ForeignKey(Drone, on_delete=models.CASCADE)
     battery_level = models.IntegerField()
+    sufficient_battery_capacity = models.BooleanField(default=False)
     state = models.CharField(max_length=10, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
