@@ -25,7 +25,8 @@ class MedicationSerializer(serializers.ModelSerializer):
                 default='PAR_00123'
             ),
             'image': openapi.Schema(
-                type=openapi.TYPE_STRING
+                type=openapi.TYPE_STRING,
+                format='binary'
             )
         },
         required=['name, weight, code']
